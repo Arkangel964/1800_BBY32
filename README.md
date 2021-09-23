@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+* Hi my name is Will. I'm excited about this project because I just really enjoy learning more about technology!
 	
 ## Technologies
 Technologies used for this project:
