@@ -121,3 +121,9 @@ mark {
 .dark-color {
     color: #20247b;
 }
+#games {
+  background-color: darkslategrey;
+}
+#gamelayout {
+  padding:10%;
+}
