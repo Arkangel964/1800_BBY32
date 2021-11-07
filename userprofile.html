@@ -27,13 +27,19 @@
   <!-- Top Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Ryme</a>
+      <a class="navbar-brand" href="main.html">Ryme</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!--Removing this ul makes the searchbar not align to the right. No, I don't know why. If you want to try to fix it, feel free.-->
+          <!-- Got rid of the bottom nav and put it here, I linked main.html to Ryme-->
+          <li>
+            <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg" src="/images/account-circle-line.png"></a>
+          </li>
+          <li>
+            <a class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg" src="/images/chat-1-line.png"></a>
+          </li>
         </ul>
         <form class="d-flex">
           <button id="filterbutton"><img id="filterimg" src="/images/filtericon.png"></button>
@@ -107,7 +113,7 @@
     </div>
 
     <br>
-
+    <!-- ??????? -->
     <div id="rating">
       <h2>User Ratings</h2>
       <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
@@ -138,19 +144,6 @@
       <label for="customRange3" class="form-label">30+ hours</label>
     </div>
   </div>
-
-  <!-- Bottom Navbar -->
-  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" id="bottomNavBar">
-    <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="main.html"><img class="bottomNavImg" src="/images/home-2-line.png"></a>
-    </div>
-    <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg" src="/images/chat-1-line.png"></a>
-    </div>
-    <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg" src="/images/account-circle-line.png"></a>
-    </div>
-  </nav>
 
   <section class="section about-section gray-bg" id="about">
     <div class="container">
@@ -232,6 +225,7 @@
           </div>
         </div>
       </div>
+      
     </div>
   </section>
   <section id="games">
@@ -268,6 +262,8 @@
       </div>
     </div>
   </section>
+
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
