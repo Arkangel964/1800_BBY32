@@ -12,9 +12,22 @@
 
     <title>Hello, world!</title>
 
-    <!-- Firebase 8 CDNs-->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Bootstrap FirebaseUI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">    
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
+    
+     <!-- Firebase 8 CDNs-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+     </script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>     
+    
     <!-- Link to the api keys for your firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
     
@@ -24,7 +37,7 @@
     <!-- Top Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Ryme</a>
+      <a class="navbar-brand" href="main.html">Ryme</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -155,42 +168,51 @@
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
             </div>
             <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
+                <form class="p-3 py-5" id="editForm">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                        <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" id="name" placeholder="enter first and last name" value=""></div>
                     </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6"><label class="labels">Age</label><input type="text" class="form-control" id="age" placeholder="age" value=""></div>
+                      <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" id="gender" value="" placeholder="gender"></div>
+                  </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                        <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                        <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
+                        <div class="col-md-12"><label class="labels">Display Name</label><input type="text" class="form-control" id="displayName" placeholder="enter display name" value=""></div>
+                        <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control" id="country" placeholder="enter country" value=""></div>
+                        <div class="col-md-12"><label class="labels">Time Zone</label><input type="text" class="form-control" id="timeZone" placeholder="PST, EST, GMT..." value=""></div>
+                        <div class="col-md-12"><label class="labels">Discord ID</label><input type="text" class="form-control" id="discordID" placeholder="Discord#1111" value=""></div>
+                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" id="emailID" placeholder="enter email id" value=""></div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                    </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                    <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                    <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-                </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                  </form>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script>
+      document.getElementById('editForm').addEventListener('submit', updateProfile);
 
+      function updateProfile() {
+          db.collection("users").doc(firebase.auth().currentUser).set({
+            name: document.getElementById('displayName'),
+            email: document.getElementById('emailID'),
+            age: document.getElemenyById('age'),
+            gender: document.getElementById('gender'),
+            displayname: document.getElementById('displayName'),
+            country: document.getElementById('country'),
+            timeZone: document.getElementById('timeZone'),
+            discordID: document.getElementById('discordID')
+          }).then(() => {
+            console.log("user info updated");
+          });
+        }
+    </script>
+  
+  
   </body>
 </html>
