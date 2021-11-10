@@ -1,44 +1,48 @@
 <!doctype html>
 <html lang="en">
-  <head>
-   
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="./styles/editprofileStyle.css">
-    <link href="./styles/my_style.css" rel="stylesheet">
 
-    <title>Hello, world!</title>
+<head>
 
-    <!-- Bootstrap FirebaseUI CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">    
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
-     <!-- Firebase 8 CDNs-->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-     </script>
-     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>     
-    
-    <!-- Link to the api keys for your firebase project -->
-    <script src="scripts/firebaseAPI.js"></script>
-    
-  </head>
-  <body>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Top Navbar -->
+  <link rel="stylesheet" href="./styles/editprofileStyle.css">
+  <link href="./styles/my_style.css" rel="stylesheet">
+
+  <title>Hello, world!</title>
+
+  <!-- Bootstrap FirebaseUI CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+  <!-- Link to the api keys for your firebase project -->
+  <script src="scripts/firebaseAPI.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
       <a class="navbar-brand" href="main.html">Ryme</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -61,59 +65,59 @@
     <button id="filterclosebutton" class="btn btn-secondary">Close</button>
     <br>
     <div id="skill">
-        <h2>Skill Level</h2>
-        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btncheck1">Casual</label>
-          
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btncheck2">Medium</label>
-          
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btncheck3">Hardcore</label>
-        </div>
+      <h2>Skill Level</h2>
+      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btncheck1">Casual</label>
+
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btncheck2">Medium</label>
+
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btncheck3">Hardcore</label>
+      </div>
     </div>
 
     <br>
 
     <div id="genre">
-        <h2>Favourite Genre</h2>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filtermoba" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              MOBA
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filterbattleroyale" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              Battle Royale
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filterrts" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              RTS
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filtershooter" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              Shooter
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filtermmo" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              MMORPG
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filterstory" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              Story
-            </label>
-        </div>
+      <h2>Favourite Genre</h2>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filtermoba" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          MOBA
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filterbattleroyale" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          Battle Royale
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filterrts" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          RTS
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filtershooter" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          Shooter
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filtermmo" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          MMORPG
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filterstory" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          Story
+        </label>
+      </div>
     </div>
 
     <br>
@@ -123,10 +127,10 @@
       <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
         <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btncheck4">1 star</label>
-      
+
         <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btncheck5">2 stars</label>
-      
+
         <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btncheck6">3 stars</label>
 
@@ -143,8 +147,8 @@
 
     <div id="availability">
       <h2>Availability</h2>
-      <label for="customRange3" class="form-label">0 hours  </label>
-      <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3" style="width: 50%;">  
+      <label for="customRange3" class="form-label">0 hours </label>
+      <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3" style="width: 50%;">
       <label for="customRange3" class="form-label">30+ hours</label>
     </div>
   </div>
@@ -152,67 +156,157 @@
   <!-- Bottom Navbar -->
   <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" id="bottomNavBar">
     <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="main.html"><img class="bottomNavImg" src="/images/home-2-line.png"></a>
+      <a class="bottomNavButton" aria-current="page" href="main.html"><img class="bottomNavImg"
+          src="/images/home-2-line.png"></a>
     </div>
     <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg" src="/images/chat-1-line.png"></a>
+      <a class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg"
+          src="/images/chat-1-line.png"></a>
     </div>
     <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg" src="/images/account-circle-line.png"></a>
+      <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg"
+          src="/images/account-circle-line.png"></a>
     </div>
   </nav>
 
-    <div class="container rounded bg-white mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-            </div>
-            <div class="col-md-5 border-right">
-                <form class="p-3 py-5" id="editForm">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" id="name" placeholder="enter first and last name" value=""></div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-md-6"><label class="labels">Age</label><input type="text" class="form-control" id="age" placeholder="age" value=""></div>
-                      <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" id="gender" value="" placeholder="gender"></div>
-                  </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Display Name</label><input type="text" class="form-control" id="displayName" placeholder="enter display name" value=""></div>
-                        <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control" id="country" placeholder="enter country" value=""></div>
-                        <div class="col-md-12"><label class="labels">Time Zone</label><input type="text" class="form-control" id="timeZone" placeholder="PST, EST, GMT..." value=""></div>
-                        <div class="col-md-12"><label class="labels">Discord ID</label><input type="text" class="form-control" id="discordID" placeholder="Discord#1111" value=""></div>
-                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" id="emailID" placeholder="enter email id" value=""></div>
-                    </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
-                  </form>
-            </div>
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+            width="150px"
+            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+            class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span>
         </div>
+      </div>
+      <div class="col-md-5 border-right">
+        <form class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile Settings</h4>
+          </div>
+          <fieldset>
+            <div class="row mt-2">
+              <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control"
+                  id="nameEdit" placeholder="Enter first and last name" value=""></div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6"><label class="labels">Age</label><input type="text" class="form-control"
+                  id="ageEdit" placeholder="Enter age" value=""></div>
+              <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control"
+                  id="genderEdit" value="" placeholder="Enter gender"></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Display Name</label><input type="text" class="form-control"
+                  id="displayEdit" placeholder="Enter display name" value=""></div>
+              <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control"
+                  id="countryEdit" placeholder="Enter country" value=""></div>
+              <div class="col-md-12"><label class="labels">Time Zone</label><input type="text" class="form-control"
+                  id="timeZoneEdit" placeholder="PST, EST, GMT..." value=""></div>
+              <div class="col-md-12"><label class="labels">Discord ID</label><input type="text" class="form-control"
+                  id="discordIDEdit" placeholder="Discord#1111" value=""></div>
+            </div>
+          </fieldset>
+          <br>
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <button id="btnSearch" class="btn btn-primary btn-md center-block" onclick="editProfile()">Edit</button>
+              <button id="btnClear" class="btn btn-danger btn-md center-block" onclick="saveProfile()">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
-    <script>
-      document.getElementById('editForm').addEventListener('submit', updateProfile);
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-      function updateProfile() {
-          db.collection("users").doc(firebase.auth().currentUser).set({
-            name: document.getElementById('displayName'),
-            email: document.getElementById('emailID'),
-            age: document.getElemenyById('age'),
-            gender: document.getElementById('gender'),
-            displayname: document.getElementById('displayName'),
-            country: document.getElementById('country'),
-            timeZone: document.getElementById('timeZone'),
-            discordID: document.getElementById('discordID')
-          }).then(() => {
-            console.log("user info updated");
-          });
+  <script>
+
+    var currentUser
+
+    function populateProfile() {
+      firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+
+          //go to the correct user document by referencing to the user uid
+          currentUser = db.collection("users").doc(user.uid)
+          //get the document for current user.
+          currentUser.get()
+            .then(userDoc => {
+              //get the data fields of the user
+              var userName = userDoc.data().name;
+              var userAge = userDoc.data().age;
+              var userGender = userDoc.data().gender;
+              var userDisplay = userDoc.data().displayName;
+              var userCountry = userDoc.data().country;
+              var userTimeZone = userDoc.data().timeZone;
+              var userDiscord = userDoc.data().discordID;
+
+              //if the data fields are not empty, then write them in to the form.
+              if (userName != null) {
+                document.getElementById("nameEdit").value = userName;
+              }
+              if (userAge != null) {
+                document.getElementById("ageEdit").value = userAge;
+              }
+              if (userGender != null) {
+                document.getElementById("genderEdit").value = userGender;
+              }
+              if (userDisplay != null) {
+                document.getElementById("displayEdit").value = userDisplay;
+              }
+              if (userCountry != null) {
+                document.getElementById("countryEdit").value = userCountry;
+              }
+              if (userTimeZone != null) {
+                document.getElementById("timeZoneEdit").value = userTimeZone;
+              }
+              if (userDiscord != null) {
+                document.getElementById("discordIDEdit").value = userDiscord;
+              }
+            })
+        } else {
+          // No user is signed in.
+          console.log("No user is signed in");
         }
-    </script>
-  
-  
-  </body>
+      });
+    }
+
+    //call the function to run it 
+    populateProfile();
+
+    function saveProfile() {
+
+      console.log("hi")
+
+      userName = document.getElementById('nameEdit').value;       //get the value of the field with id="nameEdit"
+      userAge = document.getElementById('ageEdit').value;     //get the value of the field with id="ageEdit"
+      userGender = document.getElementById('genderEdit').value;       //get the value of the field with id="genderEdit"
+      userDisplay = document.getElementById('displayEdit').value;     //get the value of the field with id="displaynameEdit"
+      userCountry = document.getElementById('countryEdit').value;       //get the value of the field with id="countryEdit"
+      userTimeZone = document.getElementById('timeZoneEdit').value;       //get the value of the field with id="timeZoneEdit"
+      userDiscord = document.getElementById('discordIDEdit').value;       //get the value of the field with id="discordIDEdit"
+
+      currentUser.update({
+        name: userName,
+        age: userAge,
+        gender: userGender,
+        displayName: userDisplay,
+        country: userCountry,
+        timeZone: userTimeZone,
+        discordID: userDiscord
+
+      })
+        .then(() => {
+          console.log("Document successfully updated!");
+        })
+    }
+
+  </script>
+
+
+</body>
+
 </html>
