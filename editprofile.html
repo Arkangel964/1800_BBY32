@@ -183,7 +183,7 @@
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Profile Settings</h4>
           </div>
-          <fieldset>
+          <fieldset id="personalInfoFields" disabled>
             <div class="row mt-2">
               <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control"
                   id="nameEdit" placeholder="Enter first and last name" value=""></div>
@@ -208,8 +208,8 @@
           <br>
           <div class="row">
             <div class="col-sm-12 text-center">
-              <button id="btnSearch" class="btn btn-primary btn-md center-block" onclick="editProfile()">Edit</button>
-              <button id="btnClear" class="btn btn-danger btn-md center-block" onclick="saveProfile()">Save</button>
+              <button type="button" class="btn btn-primary btn-md center-block" onclick="editProfile()">Edit</button>
+              <button type="button" class="btn btn-danger btn-md center-block" onclick="saveProfile()">Save</button>
             </div>
           </div>
         </form>
@@ -222,9 +222,7 @@
     crossorigin="anonymous"></script>
 
   <script>
-
     var currentUser
-
     function populateProfile() {
       firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -277,9 +275,12 @@
     //call the function to run it 
     populateProfile();
 
-    function saveProfile() {
+    function editProfile() {
+            //Enable the form fields
+            document.getElementById('personalInfoFields').disabled = false;
+        }
 
-      console.log("hi")
+    function saveProfile() {
 
       userName = document.getElementById('nameEdit').value;       //get the value of the field with id="nameEdit"
       userAge = document.getElementById('ageEdit').value;     //get the value of the field with id="ageEdit"
@@ -297,13 +298,12 @@
         country: userCountry,
         timeZone: userTimeZone,
         discordID: userDiscord
-
       })
         .then(() => {
           console.log("Document successfully updated!");
         })
+        document.getElementById('personalInfoFields').disabled = true;
     }
-
   </script>
 
 
