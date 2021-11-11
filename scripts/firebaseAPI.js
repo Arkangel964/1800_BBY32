@@ -1,4 +1,5 @@
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
     apiKey: "AIzaSyCACHG6AZyEWz799hNI9HIcjPggea285cc",
     authDomain: "ryme-c5787.firebaseapp.com",
@@ -11,4 +12,6 @@ const firebaseConfig = {
     const app = firebase.initializeApp(firebaseConfig);
 
     const db = firebase.firestore();
+    const storage = firebase.storage();
+
     
