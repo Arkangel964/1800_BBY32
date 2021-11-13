@@ -15,11 +15,18 @@
   <title>Ryme (Profile)</title>
 
   <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <!-- Link to the api keys for your firebase project -->
-  <script src="scripts/firebaseAPI.js"></script>
-  
+  <script src="./scripts/firebaseAPI.js"></script>
+
 </head>
 
 <body>
@@ -28,17 +35,20 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
       <a class="navbar-brand" href="main.html">Ryme</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <!-- Got rid of the bottom nav and put it here, I linked main.html to Ryme-->
           <li>
-            <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg" src="/images/account-circle-line.png"></a>
+            <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg"
+                src="/images/account-circle-line.png"></a>
           </li>
           <li>
-            <a class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg" src="/images/chat-1-line.png"></a>
+            <a class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg"
+                src="/images/chat-1-line.png"></a>
           </li>
         </ul>
         <form class="d-flex">
@@ -57,59 +67,59 @@
     <button id="filterclosebutton" class="btn btn-secondary">Close</button>
     <br>
     <div id="skill">
-        <h2>Skill Level</h2>
-        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btncheck1">Casual</label>
-          
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btncheck2">Medium</label>
-          
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btncheck3">Hardcore</label>
-        </div>
+      <h2>Skill Level</h2>
+      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btncheck1">Casual</label>
+
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btncheck2">Medium</label>
+
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btncheck3">Hardcore</label>
+      </div>
     </div>
 
     <br>
 
     <div id="genre">
-        <h2>Favourite Genre</h2>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filtermoba" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              MOBA
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filterbattleroyale" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              Battle Royale
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filterrts" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              RTS
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filtershooter" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              Shooter
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filtermmo" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              MMORPG
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="filterstory" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-              Story
-            </label>
-        </div>
+      <h2>Favourite Genre</h2>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filtermoba" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          MOBA
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filterbattleroyale" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          Battle Royale
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filterrts" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          RTS
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filtershooter" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          Shooter
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filtermmo" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          MMORPG
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="filterstory" checked>
+        <label class="form-check-label" for="flexCheckDefault">
+          Story
+        </label>
+      </div>
     </div>
 
     <br>
@@ -119,10 +129,10 @@
       <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
         <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btncheck4">1 star</label>
-      
+
         <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btncheck5">2 stars</label>
-      
+
         <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btncheck6">3 stars</label>
 
@@ -139,8 +149,8 @@
 
     <div id="availability">
       <h2>Availability</h2>
-      <label for="customRange3" class="form-label">0 hours  </label>
-      <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3" style="width: 50%;">  
+      <label for="customRange3" class="form-label">0 hours </label>
+      <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3" style="width: 50%;">
       <label for="customRange3" class="form-label">30+ hours</label>
     </div>
   </div>
@@ -163,10 +173,14 @@
       <div class="row align-items-center flex-row-reverse">
         <div class="col-lg-6">
           <div class="about-text go-to">
-            <h3 class="dark-color">About Me <a href="editprofile.html" class="btn btn-info" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-              <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-              <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-            </svg></a></h3> 
+            <h3 class="dark-color">About Me <a href="editprofile.html" class="btn btn-info" role="button"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+                  viewbox="0 0 16 16">
+                  <path
+                    d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                  <path
+                    d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                </svg></a></h3>
             <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
             <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish,
               modern websites, web services and online stores. My passion is to design digital user experiences through
@@ -175,21 +189,21 @@
               <div class="col-md-6">
                 <div class="media">
                   <label>Name</label>
-                  <p>John Doe</p>
+                  <h5><span id="usernamehere"></span></h5>
                 </div>
                 <div class="media">
                   <label>Age</label>
-                  <p>22 Yr</p>
+                  <h5><span id="agehere"></span></h5>
                 </div>
                 <div class="media">
                   <label>Location</label>
-                  <p>Canada</p>
+                  <h5><span id="countryhere"></span></h5>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="media">
                   <label>Gender</label>
-                  <p>M/F</p>
+                  <h5><span id="genderhere"></span></h5>
                 </div>
                 <div class="media">
                   <label>Instagram</label>
@@ -198,7 +212,7 @@
                 <div class="media">
                   <label>Discord</label>
                   <p>Discord#0404</p>
-                </div>                
+                </div>
               </div>
             </div>
           </div>
@@ -244,42 +258,77 @@
     <div id="gamelayout" class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
         <div class="card h-90">
-          <img src="/1800_BBY32/images/league.jpg" class="card-img-top" alt="...">
+          <img src="/images/league.jpg" class="card-img-top" alt="League of Legends">
         </div>
       </div>
       <div class="col">
         <div class="card h-90">
-          <img src="/1800_BBY32/images/csgo.jpg" class="card-img-top" alt="...">
+          <img src="/images/csgo.jpg" class="card-img-top" alt="Counter Strike: Global Elite">
         </div>
       </div>
       <div class="col">
         <div class="card h-90">
-          <img src="/1800_BBY32/images/dota2.jpg" class="card-img-top" alt="...">
+          <img src="/images/dota2.jpg" class="card-img-top" alt="Dota 2">
         </div>
       </div>
       <div class="col">
         <div class="card h-90">
-          <img src="/1800_BBY32/images/genshin.jpg" class="card-img-top" alt="...">
+          <img src="/images/genshin.jpg" class="card-img-top" alt="Genshin Impact">
         </div>
       </div>
       <div class="col">
         <div class="card h-90">
-          <img src="/1800_BBY32/images/sc2.jpg" class="card-img-top" alt="...">
+          <img src="/images/sc2.jpg" class="card-img-top" alt="StarCraft">
         </div>
       </div>
       <div class="col">
         <div class="card h-90">
-          <img src="/1800_BBY32/images/valorant.jpg" class="card-img-top" alt="...">
+          <img src="/images/valorant.jpg" class="card-img-top" alt="Valorant">
         </div>
       </div>
     </div>
   </section>
 
-  
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <script>
+    function insertinfos() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          console.log(user.uid);
+          currentUser = db.collection("users").doc(user.uid);
+          currentUser.get()
+            .then(userDoc => {
+            
+              var user_Name = userDoc.data().name;
+              console.log(user_Name);
+              document.getElementById("usernamehere").innerText = user_Name; //user name
+              
+              var user_Age = userDoc.data().age;
+              console.log(user_Age);
+              document.getElementById("agehere").innerText = user_Age; //user age
+              
+              var user_Country = userDoc.data().country;
+              console.log(user_Country);
+              document.getElementById("countryhere").innerText = user_Country; //user country
+
+              var user_Gender = userDoc.data().gender;
+              console.log(user_Gender);
+              document.getElementById("genderhere").innerText = user_Gender;  //user gender
+            })
+        } else {
+        }
+      });
+    }
+    insertinfos();
+
+
+  </script>
+
+
 
 </body>
 
