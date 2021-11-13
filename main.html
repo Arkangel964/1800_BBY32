@@ -10,14 +10,21 @@
     <link href="./styles/my_style.css" rel="stylesheet">
     <link href="./styles/main.css" rel="stylesheet">
 
-    <title>Hello, world!</title>
+    <title>Main</title>
 
-    <!-- Firebase 8 CDNs-->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-    <!-- Link to the api keys for your firebase project -->
-    <script src="scripts/firebaseAPI.js"></script>
-    
+  <!-- Link to the api keys for your firebase project -->
+  <script src="scripts/firebaseAPI.js"></script>
     
   </head>
   <body>
@@ -253,12 +260,7 @@
       </div>
     </div>
 </div>
-  
-  
 
-
-
-  
   <!-- Bottom Navbar -->
   <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" id="bottomNavBar">
     <div class="bottomNavDiv">
@@ -272,21 +274,29 @@
     </div>
   </nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+  
   <script>
-    let user1 = db.collection("users").doc(QQ6H9GceHrPXJORrRf48zp7hbDb2);
-    let user2 = db.collection("users").doc(yPiFcVhUn1V9hvrZkYhKWsdPZMV2);
-    let user3 = db.collection("users").doc(QsMrBqyzcJVS0qj2w9qhiYiJIij1);
+    let user1 = db.collection("users").doc("QQ6H9GceHrPXJORrRf48zp7hbDb2");
+    let user2 = db.collection("users").doc("yPiFcVhUn1V9hvrZkYhKWsdPZMV2");
+    let user3 = db.collection("users").doc("QsMrBqyzcJVS0qj2w9qhiYiJIij1");
 
     function populateNames(){
-      document.getElementById(username1).innerHTML = user1.name;
-      document.getElementById(username2).innerHTML = user2.name;
-      document.getElementById(username3).innerHTML = user3.name;
+      user1.get().then(userDoc => {
+        document.getElementById("username1").innerHTML = userDoc.data().name;
+            });
+
+      user2.get().then(userDoc => {
+        document.getElementById("username2").innerHTML = userDoc.data().name;
+      });
+
+      user3.get().then(userDoc => {
+        document.getElementById("username3").innerHTML = userDoc.data().name;
+      });
     }
 
     populateNames();
-    
-    /*
+
     const querySnapshot = getDocs(collection(db, "users"));
     const numShown = 5;
     let n = 0;
@@ -319,7 +329,7 @@
     }
 
     populateDoc();
-    */
+    
 
   </script>
   </body>
