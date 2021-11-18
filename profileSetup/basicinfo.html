@@ -53,9 +53,9 @@
                   <div class="mt-3">
                     <select class="form-select form-select-md" id="gender" aria-label=".form-select-lg example">
                       <option selected>What's your gender?</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                      <option value="3">Other</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                   
@@ -79,7 +79,7 @@
 
                   <div class="mt-4 text-center d-grid gap-2 d-md-flex justify-content-end">
                     <a onclick="saveProfile()" class="btn btn-primary profile-button" type="button">Save</a>
-                    <a href="preferences.html" id="next" class="btn btn-primary profile-button" type="button" disabled>Next Step</a>
+                    <a href="" id="next" class="btn bg-white profile-button" type="button" disabled>(Save first!)</a>
                   </div>
               </div>
           </div>
@@ -108,8 +108,13 @@
               country: userCountry,
               discordID: userDiscord
             }).then(() => {
-              document.getElementById('next').disabled = false; 
               console.log("Document successfully updated!");
+              var link = document.getElementById("next");
+              link.classList.add("btn-primary");
+              link.classList.remove("bg-white");
+              link.innerHTML = "Next Step";
+              link.setAttribute("href", "preferences.html");
+              return false;
             })
           }
         });
