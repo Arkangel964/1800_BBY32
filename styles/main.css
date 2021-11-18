@@ -14,7 +14,7 @@
 }
 
 .userCard{
-    padding: 2% 5%;
+    padding: 1% 5%;
 }
 
 .profileImg{
@@ -55,8 +55,8 @@ body {
 }
 
 .bg-c-lite-green {
-    background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #ee5a6f, #f29263)
+    background: -webkit-gradient(linear, left top, right top, from(#00d9ff), to(#07afbb));
+    background: linear-gradient(to right, #00e1ff, #00b8b8)
 }
 
 .user-profile {
