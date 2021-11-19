@@ -135,24 +135,24 @@
     </div>
 
     <script>
-        var currentUser
+        var currentUser;
         function populateGames() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
                 if (user) {
 
                     //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid).collection("games").doc("games")
+                    currentUser = db.collection("users").doc(user.uid).collection("games").doc("games");
                     //get the document for current user.
                     currentUser.get()
                         .then(gamesDoc => {
                             //get the data fields of the user
                             var valorant = gamesDoc.data().Valorant;
                             var league = gamesDoc.data().League;
-                            var dota2 = gamesDoc.data().Dota2;
+                            var dotaTwo = gamesDoc.data().Dota2;
                             var genshin = gamesDoc.data().Genshin;
                             var csgo = gamesDoc.data().CSGO;
-                            var sc2 = gamesDoc.data().Starcraft2;
+                            var scTwo = gamesDoc.data().Starcraft2;
                             var wow = gamesDoc.data().WorldOfWarCraft;
                             var minecraft = gamesDoc.data().Minecraft;
 
@@ -160,7 +160,7 @@
                             if (csgo == true) {
                                 document.getElementById("ck1a").checked = true;
                             }
-                            if (dota2 == true) {
+                            if (dotaTwo == true) {
                                 document.getElementById("ck1b").checked = true;
                             }
                             if (genshin == true) {
@@ -169,7 +169,7 @@
                             if (league == true) {
                                 document.getElementById("ck1d").checked = true;
                             }
-                            if (sc2 == true) {
+                            if (scTwo == true) {
                                 document.getElementById("ck1e").checked = true;
                             }
                             if (valorant == true) {
@@ -193,22 +193,21 @@
         populateGames();
 
         function saveGames() {
-
-            csgo = document.getElementById("ck1a").checked;
-            dota2 = document.getElementById("ck1b").checked;
-            genshin = document.getElementById("ck1c").checked;
-            league = document.getElementById("ck1d").checked;
-            sc2 = document.getElementById("ck1e").checked;
-            valorant = document.getElementById("ck1f").checked;
-            wow = document.getElementById("ck1g").checked;
-            minecraft = document.getElementById("ck1h").checked;
+            csgo = document.getElementById('ck1a').checked;
+            dotaTwo = document.getElementById('ck1b').checked;
+            genshin = document.getElementById('ck1c').checked;
+            league = document.getElementById('ck1d').checked;
+            scTwo = document.getElementById('ck1e').checked;
+            valorant = document.getElementById('ck1f').checked;
+            wow = document.getElementById('ck1g').checked;
+            minecraft = document.getElementById('ck1h').checked;
 
             currentUser.update({
                 CSGO: csgo,
-                Dota2: dota2,
+                Dota2: dotaTwo,
                 Genshin: genshin,
                 League: league,
-                Starcraft2: sc2,
+                Starcraft2: scTwo,
                 Valorant: valorant,
                 WorldOfWarcraft: wow,
                 Minecraft: minecraft
