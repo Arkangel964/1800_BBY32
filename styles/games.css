@@ -47,6 +47,9 @@
 h1 {
   text-align: center;
 }
+#choosegames {
+  text-align: center;
+}
 /* 
 label:before {
     content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/unchecked_checkbox.png");

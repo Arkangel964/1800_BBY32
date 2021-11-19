@@ -130,16 +130,93 @@
             </div>
         </div>
     </div>
+    <div class="row" id="choosegames">
+        <a href="games.html"><button type="button" class="btn btn-primary btn-md center-block" onclick="saveGames()" >Choose Games</button></a>
+    </div>
 
     <script>
-        function saveGames() {
+        var currentUser
+        function populateGames() {
             firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
                 if (user) {
-                    var currentUser = db.collection("users").doc(user.uid)
-                    var userID = user.uid;
+
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(gamesDoc => {
+                            //get the data fields of the user
+                            var valorant = gamesDoc.data().Valorant;
+                            var league = gamesDoc.data().League;
+                            var dota2 = gamesDoc.data().Dota2;
+                            var genshin = gamesDoc.data().Genshin;
+                            var csgo = gamesDoc.data().CSGO;
+                            var sc2 = gamesDoc.data().Starcraft2;
+                            var wow = gamesDoc.data().WorldOfWarCraft;
+                            var minecraft = gamesDoc.data().Minecraft;
+
+                            //if the data fields are true, then check them in list.
+                            if (valorant == true) {
+                                document.getElementById("ck1f").checked = true;
+                            }
+                            if (league == true) {
+                                document.getElementById("ck1d").checked = true;
+                            }
+                            if (dota2 == true) {
+                                document.getElementById("ck1b").checked = true;
+                            }
+                            if (genshin == true) {
+                                document.getElementById("ck1c").checked = true;
+                            }
+                            if (csgo == true) {
+                                document.getElementById("ck1a").checked = true;
+                            }
+                            if (sc2 == true) {
+                                document.getElementById("ck1e").checked = true;
+                            }
+                            if (wow == true) {
+                                document.getElementById("ck1g").checked = true;
+                            }
+                            if (minecraft == true) {
+                                document.getElementById("ck1h").checked = true;
+                            }
+                        })
+                } else {
+                    // No user is signed in.
+                    console.log("No user is signed in");
                 }
+            });
+        }
+
+        //call the function to run it 
+        populateGames();
+
+        function saveGames() {
+
+            var csgo = document.getElementById("ck1a").checked;
+            var dota2 = document.getElementById("ck1b").checked;
+            var genshin = document.getElementById("ck1c").checked;
+            var league = document.getElementById("ck1d").checked;
+            var sc2 = document.getElementById("ck1e").checked;
+            var valorant = document.getElementById("ck1f").checked;
+            var wow = document.getElementById("ck1g").checked;
+            var minecraft = document.getElementById("ck1h").checked;
+
+            currentUser.set({
+                CSGO: csgo,
+                Dota2: dota2,
+                Genshin: genshin,
+                League: league,
+                Starcraft2: sc2,
+                Valorant: valorant,
+                WorldOfWarcraft: wow,
+                Minecraft: minecraft
             })
-        };
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+        }
     </script>
 
 </body>
