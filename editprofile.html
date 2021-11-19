@@ -187,6 +187,9 @@
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Profile Settings</h4>
           </div>
+          <div class="row">
+            <a href="games.html"><button type="button" class="btn btn-primary btn-md center-block">Choose Games</button></a>
+          </div>
           <fieldset id="personalInfoFields" disabled>
             <div class="row mt-2">
               <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control"
@@ -208,6 +211,10 @@
               <div class="col-md-12"><label class="labels">Discord ID</label><input type="text" class="form-control"
                   id="discordIDEdit" placeholder="Discord#1111" value=""></div>
             </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">About Me</label>
+              <textarea class="form-control" id="descriptionEdit" rows="3"></textarea>
+          </div>
           </fieldset>
           <br>
           <div class="row">
@@ -245,6 +252,7 @@
               var userCountry = userDoc.data().country;
               var userTimeZone = userDoc.data().timeZone;
               var userDiscord = userDoc.data().discordID;
+              var userAbout = userDoc.data().aboutMe;
 
               //if the data fields are not empty, then write them in to the form.
               if (userName != null) {
@@ -267,6 +275,9 @@
               }
               if (userDiscord != null) {
                 document.getElementById("discordIDEdit").value = userDiscord;
+              }
+              if(userAbout != null) {
+                document.getElementById("descriptionEdit").value = userAbout;
               }
             })
         } else {
@@ -293,6 +304,7 @@
       userCountry = document.getElementById('countryEdit').value;       //get the value of the field with id="countryEdit"
       userTimeZone = document.getElementById('timeZoneEdit').value;       //get the value of the field with id="timeZoneEdit"
       userDiscord = document.getElementById('discordIDEdit').value;       //get the value of the field with id="discordIDEdit"
+      userAbout = document.getElementById('descriptionEdit').value;
 
       currentUser.update({
         name: userName,
@@ -301,7 +313,8 @@
         displayName: userDisplay,
         country: userCountry,
         timeZone: userTimeZone,
-        discordID: userDiscord
+        discordID: userDiscord,
+        aboutMe: userAbout
       })
         .then(() => {
           console.log("Document successfully updated!");

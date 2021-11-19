@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="./styles/games.css" rel="stylesheet">
+
+    <title>Hello, world!</title>
+
+    <!-- Bootstrap FirebaseUI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <!-- Link to the api keys for your firebase project -->
+    <script src="./scripts/firebaseAPI.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="main.html">Ryme</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!--Removing this ul makes the searchbar not align to the right. No, I don't know why. If you want to try to fix it, feel free.-->
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Content HTML -->
+    <br><br><br><br>
+    <h1> Choose Your Games </h1>
+    <div id="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1a">
+                    <label class="custom-control-label" for="ck1a">
+                        <img src="/images/csgo.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1b">
+                    <label class="custom-control-label" for="ck1b">
+                        <img src="/images/dota2.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1c">
+                    <label class="custom-control-label" for="ck1c">
+                        <img src="/images/genshin.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1d">
+                    <label class="custom-control-label" for="ck1d">
+                        <img src="/images/league.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1e">
+                    <label class="custom-control-label" for="ck1e">
+                        <img src="/images/sc2.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1f">
+                    <label class="custom-control-label" for="ck1f">
+                        <img src="/images/valorant.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1g">
+                    <label class="custom-control-label" for="ck1g">
+                        <img src="/images/worldofwarcraft.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1h">
+                    <label class="custom-control-label" for="ck1h">
+                        <img src="/images/minecraft.jpg" alt="#" class="img-fluid">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function saveGames() {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    var currentUser = db.collection("users").doc(user.uid)
+                    var userID = user.uid;
+                }
+            })
+        };
+    </script>
+
+</body>
+
+</html>
