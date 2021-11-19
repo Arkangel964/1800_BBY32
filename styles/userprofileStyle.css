@@ -12,9 +12,10 @@ body{
 img {
     max-width: 100%;
 }
-img {
-    vertical-align: middle;
-    border-style: none;
+#gamelayout img {
+    width: 30%;
+    margin: 10px;
+
 }
 /* About Me 
 ---------------------*/

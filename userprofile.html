@@ -18,7 +18,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -182,7 +182,8 @@
                     d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                 </svg></a></h3>
             <h6 class="theme-color lead" id="displaynamehere"></h6>
-            <p id="aboutmehere">I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish,
+            <p id="aboutmehere">I <mark>design and develop</mark> services for customers of all sizes, specializing in
+              creating stylish,
               modern websites, web services and online stores. My passion is to design digital user experiences through
               the bold interface and meaningful interactions.</p>
             <div class="row about-list">
@@ -255,37 +256,9 @@
     </div>
   </section>
   <section id="games">
-    <div id="gamelayout" class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-90">
-          <img src="/images/league.jpg" class="card-img-top" alt="League of Legends">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-90">
-          <img src="/images/csgo.jpg" class="card-img-top" alt="Counter Strike: Global Elite">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-90">
-          <img src="/images/dota2.jpg" class="card-img-top" alt="Dota 2">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-90">
-          <img src="/images/genshin.jpg" class="card-img-top" alt="Genshin Impact">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-90">
-          <img src="/images/sc2.jpg" class="card-img-top" alt="StarCraft">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-90">
-          <img src="/images/valorant.jpg" class="card-img-top" alt="Valorant">
-        </div>
-      </div>
+    <div id="gamelayout" class="row-cols-auto">
+
+
     </div>
   </section>
 
@@ -293,7 +266,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-  </script>
+    </script>
   <script>
     function insertinfos() {
       firebase.auth().onAuthStateChanged(user => {
@@ -302,15 +275,15 @@
           currentUser = db.collection("users").doc(user.uid);
           currentUser.get()
             .then(userDoc => {
-            
+
               var user_Name = userDoc.data().name;
               console.log(user_Name);
               document.getElementById("usernamehere").innerText = user_Name; //user name
-              
+
               var user_Age = userDoc.data().age;
               console.log(user_Age);
               document.getElementById("agehere").innerText = user_Age; //user age
-              
+
               var user_Country = userDoc.data().country;
               console.log(user_Country);
               document.getElementById("countryhere").innerText = user_Country; //user country
@@ -340,6 +313,84 @@
       });
     }
     insertinfos();
+
+    function populateGameLIst() {
+      firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+
+          //go to the correct user document by referencing to the user uid
+          currentUser = db.collection("users").doc(user.uid).collection("games").doc("games")
+          //get the document for current user.
+          currentUser.get()
+            .then(gamesDoc => {
+              //get the data fields of the user
+              var valorant = gamesDoc.data().Valorant;
+              var league = gamesDoc.data().League;
+              var dota2 = gamesDoc.data().Dota2;
+              var genshin = gamesDoc.data().Genshin;
+              var csgo = gamesDoc.data().CSGO;
+              var sc2 = gamesDoc.data().Starcraft2;
+              var wow = gamesDoc.data().WorldOfWarCraft;
+              var minecraft = gamesDoc.data().Minecraft;
+
+              //if the data fields are true, then check them in list.
+              if (csgo == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/csgo.jpg");
+                x.setAttribute("alt", "Counter Strike Global Offensive");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+              if (dota2 == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/dota2.jpg");
+                x.setAttribute("alt", "Dota 2");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+              if (genshin == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/genshin.jpg");
+                x.setAttribute("alt", "Genshin Impact");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+              if (league == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/league.jpg");
+                x.setAttribute("alt", "League of Legends");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+              if (sc2 == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/sc2.jpg");
+                x.setAttribute("alt", "Starcraft 2");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+              if (valorant == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/valorant.jpg");
+                x.setAttribute("alt", "Valorant");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+              if (wow == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/worldofwarcraft.jpg");
+                x.setAttribute("alt", "World of Warcraft");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+              if (minecraft == true) {
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "/images/minecraft.jpg");
+                x.setAttribute("alt", "Minecraft");
+                document.getElementById("gamelayout").appendChild(x);
+              }
+            })
+        } else {
+          // No user is signed in.
+          console.log("No user is signed in");
+        }
+      });
+    }
+    populateGameLIst();
 
 
   </script>

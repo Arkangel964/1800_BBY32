@@ -142,7 +142,7 @@
                 if (user) {
 
                     //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid)
+                    currentUser = db.collection("users").doc(user.uid).collection("games").doc("games")
                     //get the document for current user.
                     currentUser.get()
                         .then(gamesDoc => {
@@ -157,11 +157,8 @@
                             var minecraft = gamesDoc.data().Minecraft;
 
                             //if the data fields are true, then check them in list.
-                            if (valorant == true) {
-                                document.getElementById("ck1f").checked = true;
-                            }
-                            if (league == true) {
-                                document.getElementById("ck1d").checked = true;
+                            if (csgo == true) {
+                                document.getElementById("ck1a").checked = true;
                             }
                             if (dota2 == true) {
                                 document.getElementById("ck1b").checked = true;
@@ -169,11 +166,14 @@
                             if (genshin == true) {
                                 document.getElementById("ck1c").checked = true;
                             }
-                            if (csgo == true) {
-                                document.getElementById("ck1a").checked = true;
+                            if (league == true) {
+                                document.getElementById("ck1d").checked = true;
                             }
                             if (sc2 == true) {
                                 document.getElementById("ck1e").checked = true;
+                            }
+                            if (valorant == true) {
+                                document.getElementById("ck1f").checked = true;
                             }
                             if (wow == true) {
                                 document.getElementById("ck1g").checked = true;
@@ -194,16 +194,16 @@
 
         function saveGames() {
 
-            var csgo = document.getElementById("ck1a").checked;
-            var dota2 = document.getElementById("ck1b").checked;
-            var genshin = document.getElementById("ck1c").checked;
-            var league = document.getElementById("ck1d").checked;
-            var sc2 = document.getElementById("ck1e").checked;
-            var valorant = document.getElementById("ck1f").checked;
-            var wow = document.getElementById("ck1g").checked;
-            var minecraft = document.getElementById("ck1h").checked;
+            csgo = document.getElementById("ck1a").checked;
+            dota2 = document.getElementById("ck1b").checked;
+            genshin = document.getElementById("ck1c").checked;
+            league = document.getElementById("ck1d").checked;
+            sc2 = document.getElementById("ck1e").checked;
+            valorant = document.getElementById("ck1f").checked;
+            wow = document.getElementById("ck1g").checked;
+            minecraft = document.getElementById("ck1h").checked;
 
-            currentUser.set({
+            currentUser.update({
                 CSGO: csgo,
                 Dota2: dota2,
                 Genshin: genshin,
