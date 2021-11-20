@@ -11,6 +11,17 @@
 
     <title>Preferences</title>
 
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+      </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
     <!-- Link to the api keys for your firebase project -->
     <script src="../scripts/firebaseAPI.js"></script>
     
@@ -31,41 +42,41 @@
                 </div>
 
                 <div class="mb-5">
-                    <h6 class="display-6 mb-3">What are your favourite genres? (select all that apply)</h6>
+                    <h6 class="display-6 mb-3">What are your favourite game genres? (select all that apply)</h6>
                     <div class="pt-1 ps-3">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="moba">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="moba">
                           MOBA
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="battleRoyale">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="battleRoyale">
                           Battle Royale 
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="rts">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="rts">
                           RTS
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="shooter">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="shooter">
                           Shooter
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="mmorpg">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="mmorpg">
                           MMORPG
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="story">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="story">
                           Story
                         </label>
                       </div>
@@ -75,50 +86,44 @@
                 <div class="mb-5">
                   <h6 class="display-6 mb-3">What's your usual playstyle?</h6>
                   <select class="form-select form-select-md mb-3" id="playstyle" aria-label=".form-select-lg example">
-                    <option value="1">Casual</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Hardcore</option>
+                    <option value="casual">Casual</option>
+                    <option value="medium">Medium</option>
+                    <option value="hardcore">Hardcore</option>
                   </select>
                 </div>
                 
                 <div class="mb-5">
-                  <h6 class="display-6 mb-3">Which ones of the followings describe your schedule? (select all that apply)</h6>
+                  <h6 class="display-6 mb-3">How often do you play games?</h6>
                   <div class="pt-1 ps-3">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="schedule1">
-                      <label class="form-check-label" for="defaultCheck2">
-                        I play whenever I have time.
+                      <input class="form-check-input" type="radio" name="schedule" value="1" id="schedule1">
+                      <label class="form-check-label" for="schedule1">
+                        I almost play everyday
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="schedule2">
-                      <label class="form-check-label" for="defaultCheck2">
-                        I usually play on weekends. 
+                      <input class="form-check-input" type="radio" name="schedule" value="2" id="schedule2">
+                      <label class="form-check-label" for="schedule2">
+                        I usually play on weekends
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="schedule3">
-                      <label class="form-check-label" for="defaultCheck2">
-                        I have a fixed schedule to play games.
+                      <input class="form-check-input" type="radio" name="schedule" value="3" id="schedule3">
+                      <label class="form-check-label" for="schedule3">
+                        I play occasionally when I have time
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="schedule4">
-                      <label class="form-check-label" for="defaultCheck2">
-                        I play almost everyday.
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="schedule5">
-                      <label class="form-check-label" for="defaultCheck2">
-                        I play occasionally in my free time.
+                      <input class="form-check-input" type="radio" name="schedule" value="0" id="schedule4">
+                      <label class="form-check-label" for="schedule4">
+                        Other
                       </label>
                     </div>
                   </div>
               </div>
 
               <div class="mt-4 text-center d-grid gap-2 d-md-flex justify-content-end">
-                <a href="avatar-bio.html" class="btn btn-primary profile-button" type="button">Next Step</a>
+                <a class="btn btn-primary profile-button" id="next" type="button">Next Step</a>
               </div>
               </div>
           </div>
@@ -126,6 +131,45 @@
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      const myStorage = window.sessionStorage;
+
+      document.getElementById("next").addEventListener("click", function() {
+        savePreferences();
+      });
+
+      function savePreferences() {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            currentUser = db.collection("users").doc(user.uid);
+            
+            let useMOBA = document.getElementById('moba').checked;
+            let userBattleRoyale = document.getElementById('battleRoyale').checked;
+            let userRTS = document.getElementById('moba').checked;
+            let userShooter = document.getElementById('shooter').checked;
+            let userMMORPG = document.getElementById('mmorpg').checked;
+            let userStory = document.getElementById('story').checked;
+            let userPlaystyle = document.getElementById('playstyle').value;
+            let userSchedule = $('input[name=schedule]:checked').val();
+
+            currentUser.update({
+              moba: useMOBA,
+              battleRoyale: userBattleRoyale,
+              rts: userRTS,
+              shooter: userShooter,
+              mmorpg: userMMORPG,
+              story: userStory,
+              playstyle: userPlaystyle,
+              schedule: userSchedule
+            }).then(() => {
+              console.log("Document successfully updated!");
+              window.location.assign("avatar-bio.html");
+            })
+          }
+        });
+      }
+
+    </script>
 
   </body>
 </html>

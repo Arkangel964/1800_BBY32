@@ -11,6 +11,17 @@
 
     <title>Avatar and Bio</title>
 
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+      </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
     <!-- Link to the api keys for your firebase project -->
     <script src="../scripts/firebaseAPI.js"></script>
     
@@ -36,18 +47,22 @@
 
                   <div class="border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                      <img class="rounded-circle" id="avatar" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                      <span class="font-weight-bold mt-3" id="avatarName">Display Name</span>
+                      <img class="rounded-circle mt-5" id="profilePic"
+                      src="../images/placeholder.jpg" alt="image not here">
+                    <div class="container text-center py-3">
+                      <button type="button" class="btn btn-info" onclick="browseFile()">Edit</button>
+                      <input type="file" accept="image/*" id="uploadPic" />                  
                     </div>
-                </div>
+                    </div>
+                  </div>
 
                   <div class="mb-3">
-                    <label class="form-label">Add your Bio here:</label>
+                    <label class="form-label" for="bio">Add your Bio here:</label>
                     <textarea class="form-control" id="bio" rows="3"></textarea>
                   </div>
 
                   <div class="mt-5 text-center">
-                    <a href="../main.html" class="btn btn-lg btn-primary profile-button" type="button">Start Matching!</a>
+                    <a class="btn btn-lg btn-primary profile-button" id="next" type="button">Start Matching!</a>
                   </div>
               </div>
           </div>
@@ -55,6 +70,109 @@
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      const myStorage = window.sessionStorage;
+
+      //direct click to the actual input
+      function browseFile() {
+        document.getElementById('uploadPic').click();
+      }
+
+      function uploadUserProfilePic() {
+          // Let's assume my storage is only enabled for authenticated users 
+          // This is set in your firebase console storage "rules" tab
+
+          firebase.auth().onAuthStateChanged(function (user) {
+              var fileInput = document.getElementById("uploadPic");   // pointer #1
+              const image = document.getElementById("profilePic"); // pointer #2
+
+              // listen for file selection
+              fileInput.addEventListener('change', function (e) {
+                  var file = e.target.files[0];
+                  var blob = URL.createObjectURL(file);
+                  image.src = blob;            // display this image
+
+                  //store using this name
+                  var storageRef = storage.ref("images/" + user.uid + ".jpg"); 
+                  
+                  //upload the picked file
+                  storageRef.put(file) 
+                      .then(function(){
+                          console.log('Uploaded to Cloud Storage.');
+                      })
+
+                  //get the URL of stored file
+                  storageRef.getDownloadURL()
+                      .then(function (url) {   // Get URL of the uploaded file
+                          console.log(url);    // Save the URL into users collection
+                          db.collection("users").doc(user.uid).update({
+                              profilePic: url
+                          })
+                          .then(function(){
+                              console.log('Added Profile Pic URL to Firestore.');
+                          })
+                      })
+              })
+          })
+      }
+      uploadUserProfilePic();
+
+      function displayUserProfilePic() {
+        console.log("hi");
+        firebase.auth().onAuthStateChanged(function (user) {      //get user object
+          db.collection("users").doc(user.uid)                  //use user's uid
+              .get()                                            //READ the doc
+              .then(function (doc) {
+                  var picUrl = doc.data().profilePic;           //extract pic url
+
+                  // use this line if "mypicdiv" is a "div"
+                  //$("#mypicdiv").append("<img src='" + picUrl + "'>")
+                  
+                  // use this line if "mypic-goes-here" is an "img" 
+                  $(profilePic).attr("src", picUrl);
+              })
+        })
+      }
+      displayUserProfilePic();
+
+      document.getElementById("next").addEventListener("click", function() {
+        setData();
+        saveBio();
+      });
+
+      function saveBio() {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            currentUser = db.collection("users").doc(user.uid);
+            
+            let userBio = document.getElementById('bio').value;       //get the value of the field with id="bio"
+
+            currentUser.update({
+              aboutMe: userBio
+            }).then(() => {
+              console.log("Document successfully updated!");
+              window.location.assign("../main.html");
+            })
+          }
+        });
+      }
+
+      function setData() {
+        let userBio = document.getElementById('bio').value;       //get the value of the field with id="gender"
+
+        myStorage.setItem("bio", userBio);
+      }
+
+      function getData() {
+        bio = myStorage.getItem("bio");
+
+        if (bio != null) {
+          document.getElementById("bio").value = bio;
+        }
+      }
+      getData();
+
+    </script>
   
   </body>
 </html>
