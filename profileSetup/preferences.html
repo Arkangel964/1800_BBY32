@@ -33,7 +33,7 @@
          <div class="border-right">
             <div class="p-3 pt-4 pb-5">
                 <div class="gap-2 mb-4">
-                  <a href="basicinfo.html" type="button" class="btn btn-light">
+                  <a type="button" class="btn btn-light" id="back" onclick="goBack()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
                     </svg>
@@ -137,13 +137,18 @@
       document.getElementById("next").addEventListener("click", function() {
         savePreferences();
       });
+      
+      async function goBack(){
+        await setData();
+        window.location.assign("basicinfo.html");
+      };
 
       function savePreferences() {
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             currentUser = db.collection("users").doc(user.uid);
             
-            let useMOBA = document.getElementById('moba').checked;
+            let userMOBA = document.getElementById('moba').checked;
             let userBattleRoyale = document.getElementById('battleRoyale').checked;
             let userRTS = document.getElementById('moba').checked;
             let userShooter = document.getElementById('shooter').checked;
@@ -153,7 +158,7 @@
             let userSchedule = $('input[name=schedule]:checked').val();
 
             currentUser.update({
-              moba: useMOBA,
+              moba: userMOBA,
               battleRoyale: userBattleRoyale,
               rts: userRTS,
               shooter: userShooter,
@@ -168,6 +173,75 @@
           }
         });
       }
+
+      function setData() {
+        let userMOBA = document.getElementById('moba').checked;
+        let userBattleRoyale = document.getElementById('battleRoyale').checked;
+        let userRTS = document.getElementById('rts').checked;
+        let userShooter = document.getElementById('shooter').checked;
+        let userMMORPG = document.getElementById('mmorpg').checked;
+        let userStory = document.getElementById('story').checked;
+        let userPlaystyle = document.getElementById('playstyle').value;
+        let userSchedule = $('input[name=schedule]:checked').val();
+
+        myStorage.setItem("moba", userMOBA);
+        myStorage.setItem("battleRoyale", userBattleRoyale);
+        myStorage.setItem("rts", userRTS);
+        myStorage.setItem("shooter", userShooter);
+        myStorage.setItem("mmorpg", userMMORPG);
+        myStorage.setItem("story", userStory);
+        myStorage.setItem("playstyle", userPlaystyle);
+        myStorage.setItem("schedule", userSchedule);
+      }
+
+      function getData() {
+        
+        let moba = myStorage.getItem("moba");
+        let battleRoyale = myStorage.getItem("battleRoyale");
+        let rts = myStorage.getItem("rts");
+        let shooter = myStorage.getItem("shooter");
+        let mmorpg = myStorage.getItem("mmorpg");
+        let story = myStorage.getItem("story");
+        let playstyle = myStorage.getItem("playstyle");
+        let schedule = myStorage.getItem("schedule");
+
+        if (moba == 'true') {
+          document.getElementById("moba").checked = true;
+        }
+        if (battleRoyale == 'true') {
+          document.getElementById("battleRoyale").checked = true;
+        }
+        if (rts == 'true') {
+          document.getElementById("rts").checked = true;
+        }
+        if (shooter == 'true') {
+          document.getElementById("shooter").checked = true;
+        }
+        if (mmorpg == 'true') {
+          document.getElementById("mmorpg").checked = true;
+        } 
+        if (story == 'true') {
+          document.getElementById("story").checked = true;
+        }
+        if (playstyle != null) {
+          document.getElementById("playstyle").value = playstyle;
+        }
+        if (schedule != null) {
+          if (schedule == 0) {
+            $('#schedule4').prop("checked", true);
+          }
+          if (schedule == 1) {
+            $('#schedule1').prop("checked", true);
+          }
+          if (schedule == 2) {
+            $('#schedule2').prop("checked", true);
+          }
+          if (schedule == 3) {
+            $('#schedule3').prop("checked", true);
+          }
+        }
+      }
+      getData();
 
     </script>
 

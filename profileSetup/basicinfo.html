@@ -100,8 +100,11 @@
         let userDisplay = document.getElementById('displayName').value;     //get the value of the field with id="displayname"
         let userCountry = document.getElementById('country').value;       //get the value of the field with id="country"
         let userDiscord = document.getElementById('discord').value;       //get the value of the field with id="discord"
-        let currentYear = new Date().getFullYear();       //get the current year
-        let userAge = currentYear - document.getElementById('year').value;     //get the user's age
+        // let currentYear = new Date().getFullYear();       //get the current year
+        let userYear = document.getElementById('year').value;       //get the value of the field with id="year"
+        let userMonth = document.getElementById('month').value;       //get the value of the field with id="year"
+        let userDay = document.getElementById('day').value;       //get the value of the field with id="year"
+        let userAge = calculateAge(new Date(userYear, userMonth, userDay));     //get the user's age
 
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
@@ -165,6 +168,13 @@
         }
       }
       getData();
+
+      function calculateAge(birthDate) { 
+        var diff_ms = Date.now() - birthDate.getTime();
+        var age_dt = new Date(diff_ms); 
+  
+          return Math.abs(age_dt.getUTCFullYear() - 1970);
+      }
       
     </script>
   </body>
