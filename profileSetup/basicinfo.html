@@ -78,7 +78,7 @@
                   </div>
 
                   <div class="mt-4 text-center d-grid gap-2 d-md-flex justify-content-end">
-                    <a class="btn btn-primary profile-button" id="next" type="button">Next Step</a>
+                    <a class="btn btn-info" id="next" type="button">Next Step</a>
                   </div>
               </div>
           </div>
@@ -102,8 +102,8 @@
         let userDiscord = document.getElementById('discord').value;       //get the value of the field with id="discord"
         // let currentYear = new Date().getFullYear();       //get the current year
         let userYear = document.getElementById('year').value;       //get the value of the field with id="year"
-        let userMonth = document.getElementById('month').value;       //get the value of the field with id="year"
-        let userDay = document.getElementById('day').value;       //get the value of the field with id="year"
+        let userMonth = document.getElementById('month').value;       //get the value of the field with id="month"
+        let userDay = document.getElementById('day').value;       //get the value of the field with id="day"
         let userAge = calculateAge(new Date(userYear, userMonth, userDay));     //get the user's age
 
         firebase.auth().onAuthStateChanged(user => {
@@ -134,25 +134,43 @@
         let userGender = document.getElementById('gender').value;       //get the value of the field with id="gender"
         let userDisplay = document.getElementById('displayName').value;     //get the value of the field with id="displayname"
         let userCountry = document.getElementById('country').value;       //get the value of the field with id="country"
+        let userState = document.getElementById('state').value;       //get the value of the field with id="country"
+        let userCity = document.getElementById('city').value;       //get the value of the field with id="country"
         let userDiscord = document.getElementById('discord').value;       //get the value of the field with id="discord"
         let userYear = document.getElementById('year').value;       //get the value of the field with id="year"
+        let userMonth = document.getElementById('month').value;       //get the value of the field with id="month"
+        let userDay = document.getElementById('day').value;       //get the value of the field with id="day"
 
         myStorage.setItem("year", userYear);
+        myStorage.setItem("month", userYear);
+        myStorage.setItem("day", userYear);
         myStorage.setItem("gender", userGender);
         myStorage.setItem("displayName", userDisplay);
         myStorage.setItem("country", userCountry);
+        myStorage.setItem("state", userCountry);
+        myStorage.setItem("city", userCountry);
         myStorage.setItem("discordID", userDiscord);
       }
 
       function getData() {
         year = myStorage.getItem("year");
+        month = myStorage.getItem("month");
+        day = myStorage.getItem("day");
         gender = myStorage.getItem("gender");
         displayName = myStorage.getItem("displayName");
         country = myStorage.getItem("country");
+        state = myStorage.getItem("state");
+        city = myStorage.getItem("city");
         discordID = myStorage.getItem("discordID");
 
         if (year != null) {
           document.getElementById("year").value = year;
+        }
+        if (month != null) {
+          document.getElementById("month").value = month;
+        }
+        if (day != null) {
+          document.getElementById("day").value = day;
         }
         if (gender != null) {
           document.getElementById("gender").value = gender;
@@ -162,6 +180,12 @@
         }
         if (country != null) {
           document.getElementById("country").value = country;
+        }
+        if (state != null) {
+          document.getElementById("state").value = state;
+        }
+        if (city != null) {
+          document.getElementById("city").value = city;
         }
         if (discordID != null) {
           document.getElementById("discord").value = discordID;

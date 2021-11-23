@@ -188,8 +188,116 @@
             <h4 class="text-right">Profile Settings</h4>
           </div>
           <div class="row">
-            <a href="games.html"><button type="button" class="btn btn-primary btn-md center-block">Choose Games</button></a>
+            <a href="games.html"><button type="button" class="btn btn-primary btn-md center-block">Add Games</button></a>
           </div>
+          <div class="accordion mt-3" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" id="changePref" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Change Preferences
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="container rounded bg-white">
+                    <div class="row">
+                       <div class="border-right">
+                          <div class="pt-4 pb-5">
+                              <div class="mb-4">
+                                  <h3 class="mb-3">My Genres</h3>
+                                  <div class="pt-1 ps-3">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="moba">
+                                      <label class="form-check-label" for="moba">
+                                        MOBA
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="battleRoyale">
+                                      <label class="form-check-label" for="battleRoyale">
+                                        Battle Royale 
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="rts">
+                                      <label class="form-check-label" for="rts">
+                                        RTS
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="shooter">
+                                      <label class="form-check-label" for="shooter">
+                                        Shooter
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="mmorpg">
+                                      <label class="form-check-label" for="mmorpg">
+                                        MMORPG
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="story">
+                                      <label class="form-check-label" for="story">
+                                        Story
+                                      </label>
+                                    </div>
+                                  </div>
+                              </div>
+              
+                              <div class="mb-4">
+                                <h3 class="mb-3">My Playstyle</h3>
+                                <select class="form-select form-select-md mb-3" id="playstyle" aria-label=".form-select-lg example">
+                                  <option value="casual">Casual</option>
+                                  <option value="medium">Medium</option>
+                                  <option value="hardcore">Hardcore</option>
+                                </select>
+                              </div>
+                              
+                              <div class="mb-5">
+                                <h3 class="mb-3">My Gaming Schedule</h3>
+                                <div class="pt-1 ps-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="schedule" value="1" id="schedule1">
+                                    <label class="form-check-label" for="schedule1">
+                                      Daily
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="schedule" value="2" id="schedule2">
+                                    <label class="form-check-label" for="schedule2">
+                                      Weekend
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="schedule" value="3" id="schedule3">
+                                    <label class="form-check-label" for="schedule3">
+                                      Occasional
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="schedule" value="0" id="schedule4">
+                                    <label class="form-check-label" for="schedule4">
+                                      Other
+                                    </label>
+                                  </div>  
+                                </div>
+                            </div>
+              
+                            <div class="mt-3 ps-2 text-center d-grid gap-2 d-md-flex justify-content-start">
+                              <a class="btn btn-info" id="savePref" type="button">Save</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        
           <fieldset id="personalInfoFields" disabled>
             <div class="row mt-2">
               <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control"
@@ -212,7 +320,7 @@
                   id="discordIDEdit" placeholder="Discord#1111" value=""></div>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">About Me</label>
+              <label class="labels" for="exampleFormControlTextarea1">About Me</label>
               <textarea class="form-control" id="descriptionEdit" rows="3"></textarea>
           </div>
           </fieldset>
@@ -227,10 +335,6 @@
       </div>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
 
   <script>
     var currentUser
@@ -383,6 +487,117 @@
       })
     }
     displayUserProfilePic();
+
+    document.getElementById("savePref").addEventListener("click", function() {
+        document.getElementById('changePref').click();
+        savePreferences();
+      });
+
+    function savePreferences() {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            currentUser = db.collection("users").doc(user.uid);
+            
+            let userMOBA = document.getElementById('moba').checked;
+            let userBattleRoyale = document.getElementById('battleRoyale').checked;
+            let userRTS = document.getElementById('moba').checked;
+            let userShooter = document.getElementById('shooter').checked;
+            let userMMORPG = document.getElementById('mmorpg').checked;
+            let userStory = document.getElementById('story').checked;
+            let userPlaystyle = document.getElementById('playstyle').value;
+            let userSchedule = $('input[name=schedule]:checked').val();
+
+            if (userSchedule === undefined) {
+              userSchedule = null;
+            }
+
+            currentUser.update({
+              moba: userMOBA,
+              battleRoyale: userBattleRoyale,
+              rts: userRTS,
+              shooter: userShooter,
+              mmorpg: userMMORPG,
+              story: userStory,
+              playstyle: userPlaystyle,
+              schedule: userSchedule
+            }).then(() => {
+              console.log("Document successfully updated!");
+            })
+          }
+        });
+      }
+
+      function populatePreferences() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+
+          currentUser = db.collection("users").doc(user.uid)
+          currentUser.get()
+            .then(userDoc => {
+              var userMOBA = userDoc.data().moba;
+              var userBattleRoyale = userDoc.data().battleRoyale;
+              var userRTS = userDoc.data().rts;
+              var userShooter = userDoc.data().shooter;
+              var userMMORPG = userDoc.data().mmorpg;
+              var userStory = userDoc.data().story;
+              var userPlaystyle = userDoc.data().playstyle;
+              var userSchedule = userDoc.data().schedule;
+
+              if (userMOBA == true) {
+                document.getElementById("moba").checked = true;
+              } else {
+                document.getElementById("moba").checked = false;
+              }
+              if (userBattleRoyale == true) {
+                document.getElementById("battleRoyale").checked = true;
+              } else {
+                document.getElementById("battleRoyale").checked = false;
+              }
+              if (userRTS == true) {
+                document.getElementById("rts").checked = true;
+              } else {
+                document.getElementById("rts").checked = false;
+              }
+              if (userShooter == true) {
+                document.getElementById("shooter").checked = true;
+              } else {
+                document.getElementById("shooter").checked = false;
+              }
+              if (userMMORPG == true) {
+                document.getElementById("mmorpg").checked = true;
+              } else {
+                document.getElementById("mmorpg").checked = false;
+              }
+              if (userStory == true) {
+                document.getElementById("story").checked = true;
+              } else {
+                document.getElementById("story").checked = false;
+              }
+              if (userPlaystyle != null) {
+                document.getElementById("playstyle").value = userPlaystyle;
+              }
+              if(userSchedule != null) {
+                if (schedule == 0) {
+                    $('#schedule4').prop("checked", true);
+                  }
+                  if (schedule == 1) {
+                    $('#schedule1').prop("checked", true);
+                  }
+                  if (schedule == 2) {
+                    $('#schedule2').prop("checked", true);
+                  }
+                  if (schedule == 3) {
+                    $('#schedule3').prop("checked", true);
+                  }
+              }
+            })
+          } else {
+            console.log("No user is signed in");
+          }
+        });
+      }
+
+      populatePreferences();
 
   </script>
 

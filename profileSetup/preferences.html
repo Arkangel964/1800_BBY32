@@ -123,7 +123,7 @@
               </div>
 
               <div class="mt-4 text-center d-grid gap-2 d-md-flex justify-content-end">
-                <a class="btn btn-primary profile-button" id="next" type="button">Next Step</a>
+                <a class="btn btn-info" id="next" type="button">Next Step</a>
               </div>
               </div>
           </div>
@@ -150,12 +150,16 @@
             
             let userMOBA = document.getElementById('moba').checked;
             let userBattleRoyale = document.getElementById('battleRoyale').checked;
-            let userRTS = document.getElementById('moba').checked;
+            let userRTS = document.getElementById('rts').checked;
             let userShooter = document.getElementById('shooter').checked;
             let userMMORPG = document.getElementById('mmorpg').checked;
             let userStory = document.getElementById('story').checked;
             let userPlaystyle = document.getElementById('playstyle').value;
             let userSchedule = $('input[name=schedule]:checked').val();
+            
+            if (userSchedule === undefined) {
+              userSchedule = null;
+            }
 
             currentUser.update({
               moba: userMOBA,
