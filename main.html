@@ -159,7 +159,7 @@
                   </div>
                 </div>
                 <ul class="list-unstyled m-t-40 m-b-10">
-                  <button class="btn btn-outline-info">Chat</button>
+                  <a class="btn btn-outline-info card-href">Chat</a>
                   <button class="btn btn-outline-info">See Profile</button>
                 </ul>
               </div>
@@ -274,6 +274,8 @@
               newcard.querySelector('.userNameHolder').innerHTML = userName;
               newcard.querySelector('.countryHolder').innerHTML = userCountry;
               newcard.querySelector('.discordHolder').innerHTML = userDiscord;
+              newcard.querySelector('.card-href').href = "chat.html?uid=" +
+                                        doc.id + "&name=" + doc.data().name;  //pass name and id
               //newcard.querySelector('.pfpHolder').src = userPFP;
 
               //give unique ids to all elements for future use

@@ -161,100 +161,46 @@
       <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg" src="/images/account-circle-line.png"></a>
     </div>
   </nav> -->
-<template id="card-template">
-    <div class="card"></div>
-    <div class="container msg">
-        <b class="card-name"> Name</b>
-        <span class="card-body"> some stuff </span>
+  <br><br> <br>
+    <template id="card-template">
+      <div class="card"></div>
+        <div class="container item">
+          <b class="card-name"> Name</b>
+          <a class="btn card-href">CHAT</a>
+      </div>
+  </template>
+
+    <div id="friends-go-here" class="container">
+      
     </div>
-</template>
-
-<div class="container py-3">
-    <h3>My Chat with <span id="friend">Friend</span></h3>
-    <!--The div element for the map -->
-    <!-- <input class="btn btn-success" value="Chat Samsantech" onclick="chat('samsantech')"> -->
-
-    <!-- <input id="username" type="text" placeholder="Enter name"><br/> -->
-    <div class="container">
-        <!-- <input id="text" type="text" placeholder="Enter name"><br /> -->
-
-        <input id="text" type="text" placeholder="Enter message"><br />
-        <button id="post"> Post </button> <br />
-        <button id="quit"> Quit </button> <br />
-        <div class="p-5 mb-4 bg-light rounded-3" id="results"></div>
-    </div>
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
-        function initChat() {
-            //get the ID of who we are chatting with
-            let params = new URL(window.location.href);
-            let uid = params.searchParams.get("uid"); //parse "uid"
-            let name = params.searchParams.get("name"); //parse "name"
-
-            //set the title to show that person's name
-            document.getElementById("friend").innerHTML = name;
-
-            // generate a random 4 digit ID
-            chatid = Math.random().toString().substr(2, 4);
-            console.log(chatid);
-            db.collection("chats").doc(chatid).set({
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(doc => {
-                alert("Your Chat ID is " + chatid + ". Pass this to your friend.");
-                postMessageListen(chatid);
-                listenNewMessage(chatid);
-                quitButtonListen(chatid);
-            })  
-        }
-        initChat();
-
-        function postMessageListen(chatid) {
-            var textInput = document.getElementById("text");
-            var postButton = document.getElementById("post");
-            postButton.addEventListener("click", function () {
-                var msgText = textInput.value; //user provided message
-                firebase.auth().onAuthStateChanged(function (user) {
-                    db.collection('chats').doc(chatid).collection("messages")
-                        .add({
-                            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                            name: user.displayName,
-                            text: msgText
+      function showAllUsers() {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    myid = user.uid;
+                    db.collection("users").get()
+                        .then(snap => {
+                            snap.forEach(doc => {
+                                if (doc.id != myid) {
+                                    let newCard = document.getElementById("card-template")
+                                        .content.cloneNode(true);
+                                    newCard.querySelector('.card-name').innerHTML = doc.data().name;
+                                    newCard.querySelector('.card-href').href = "chat.html?uid=" +
+                                        doc.id + "&name=" + doc.data().name;  //pass name and id
+                                    document.getElementById("friends-go-here").appendChild(newCard);
+                                }
+                            })
                         })
-                    textInput.value = "";
-                })
-            });
-        }
 
-        function quitButtonListen(chatid) {
-            var quitButton = document.getElementById("quit");
-            quitButton.addEventListener("click", function () {
-                db.collection("chats").doc(chatid)
-                    .get()
-                    .then(snap => {
-                        snap.ref.delete();
-                        window.location.href = "friends.html";
-                    })
-
+                } else {
+                    // No user is signed in.
+                    console.log("no user signed in");
+                }
             })
         }
-
-        function listenNewMessage(chatid) {
-            db.collection("chats").doc(chatid).collection("messages")
-                .onSnapshot(snap => {
-                    snap.docChanges().forEach(change => {
-                        if (change.type == "added") {
-                            console.log("new message ", change.doc.data());
-                            let msgCard = document.getElementById("card-template")
-                                .content.cloneNode(true);
-                            msgCard.querySelector('.card-body').innerHTML = change.doc.data().text;
-                            msgCard.querySelector('.card-name').innerHTML = change.doc.data().name;
-                            document.getElementById("results").appendChild(msgCard);
-                        }
-                    })
-                })
-        }
+        showAllUsers();
     </script>
   </body>
 </html>
