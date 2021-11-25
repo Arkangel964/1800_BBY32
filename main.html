@@ -241,6 +241,30 @@
       if(document.getElementById("ageFilter").value != 0){
         filteredCollection = filteredCollection.where("age", ">=", document.getElementById("ageFilter").value)
       }
+
+      if(document.getElementById("filtermoba").value = false){
+        filteredCollection = filteredCollection.where("moba", "==", false)
+      }
+
+      if(document.getElementById("filterbattleroyale").value = false){
+        filteredCollection = filteredCollection.where("battleRoyale", "==", false)
+      }
+
+      if(document.getElementById("filterrts").value = false){
+        filteredCollection = filteredCollection.where("rts", "==", false)
+      }
+
+      if(document.getElementById("filtershooter").value = false){
+        filteredCollection = filteredCollection.where("shooter", "==", false)
+      }
+
+      if(document.getElementById("filtermmo").value = false){
+        filteredCollection = filteredCollection.where("mmorpg", "==", false)
+      }
+
+      if(document.getElementById("filterstory").value = false){
+        filteredCollection = filteredCollection.where("story", "==", false)
+      }
     }
 
     /*THIS PART DISPLAYS CARDS FOR EACH USER IN THE COLLECTION*/
