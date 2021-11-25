@@ -131,18 +131,19 @@
         </div>
     </div>
     <div class="row" id="choosegames">
-        <a href="games.html"><button type="button" class="btn btn-primary btn-md center-block" onclick="saveGames()" >Choose Games</button></a>
+        <a><button type="button" class="btn btn-primary btn-md center-block" onclick="saveGames()" >Choose Games</button></a>
     </div>
 
     <script>
         var currentUser;
+
         function populateGames() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
                 if (user) {
 
                     //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid).collection("games").doc("games");
+                    currentUser = db.collection("users").doc(user.uid);
                     //get the document for current user.
                     currentUser.get()
                         .then(gamesDoc => {
@@ -214,6 +215,7 @@
             })
                 .then(() => {
                     console.log("Document successfully updated!");
+                    window.location.assign("games.html");
                 })
         }
     </script>
