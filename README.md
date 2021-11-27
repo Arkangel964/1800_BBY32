@@ -10,6 +10,7 @@ This browser based web application to ...
 * Hi my name is Will. I'm excited about this project because I just really enjoy learning more about technology!
 * Hi, my name is Nathan. Excited to make an app for gamers to connect
 * HI my name is miguel i am 19 years old...
+* Hi my name is Kirin. I'm looking forward to making this app.
 
 	
 ## Technologies
