@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./styles/editprofileStyle.css">
   <link href="./styles/my_style.css" rel="stylesheet">
 
-  <title>Hello, world!</title>
+  <title>Edit Profile</title>
 
   <!-- Bootstrap FirebaseUI CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -300,22 +300,49 @@
         
           <fieldset id="personalInfoFields" disabled>
             <div class="row mt-2">
-              <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control"
-                  id="nameEdit" placeholder="Enter first and last name" value=""></div>
+              <div class="col-md-12">
+                <label class="labels">Name</label>
+                <input type="text" class="form-control"
+                  id="nameEdit" placeholder="Profile name" value="">
+              </div>
+              <div class="col-md-12">
+                <label class="labels" for="birthdayEdit">Birthday</label>
+                <div class="input-group" id="birthdayEdit">
+                  <input type="text" class="form-control" id="monthEdit" placeholder="Month" aria-label="Month">
+                  <input type="number" class="form-control" id="dayEdit" placeholder="Day" aria-label="Day">
+                  <input type="number" class="form-control" id="yearEdit" placeholder="Year" aria-label="Year">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label class="labels" for="genderEdit">Gender</label>
+                <select class="form-control" id="genderEdit" aria-label="gender">
+                  <option value="" selected hidden></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
             </div>
-            <div class="row mt-2">
-              <div class="col-md-6"><label class="labels">Age</label><input type="number" class="form-control"
-                  id="ageEdit" placeholder="Enter age" value=""></div>
-              <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control"
-                  id="genderEdit" value="" placeholder="Enter gender"></div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12"><label class="labels">Display Name</label><input type="text" class="form-control"
-                  id="displayEdit" placeholder="Enter display name" value=""></div>
-              <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control"
-                  id="countryEdit" placeholder="Enter country" value=""></div>
-              <div class="col-md-12"><label class="labels">Time Zone</label><input type="text" class="form-control"
-                  id="timeZoneEdit" placeholder="PST, EST, GMT..." value=""></div>
+            <div class="row">
+              <div class="col-md-12">
+                <label class="labels">Location</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="cityEdit" placeholder="City" aria-label="City">
+                  <input type="text" class="form-control" id="stateEdit" placeholder="State" aria-label="State">
+                  <select class="form-control" id="countryEdit" aria-label="Country"> 
+                    <option value="" selected hidden>Country</option>
+                    <option value="CA">Canada</option>
+                    <option value="US">United States</option>
+                    <option value="AU">Australia</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="FR">France</option>
+                    <option value="JP">Japan</option>
+                    <option value="BR">Brazil</option>
+                  </select>
+                </div>
+                </div>
+              <!-- <div class="col-md-12"><label class="labels">Time Zone</label><input type="text" class="form-control"
+                  id="timeZoneEdit" placeholder="PST, EST, GMT..." value=""></div> -->
               <div class="col-md-12"><label class="labels">Discord ID</label><input type="text" class="form-control"
                   id="discordIDEdit" placeholder="Discord#1111" value=""></div>
             </div>
@@ -352,9 +379,13 @@
               var userName = userDoc.data().name;
               var userAge = userDoc.data().age;
               var userGender = userDoc.data().gender;
-              var userDisplay = userDoc.data().displayName;
+              var userYear = userDoc.data().year;
+              var userMonth = userDoc.data().month;
+              var userDay = userDoc.data().day;
               var userCountry = userDoc.data().country;
-              var userTimeZone = userDoc.data().timeZone;
+              var userState = userDoc.data().state;
+              var userCity = userDoc.data().city;
+              // var userTimeZone = userDoc.data().timeZone;
               var userDiscord = userDoc.data().discordID;
               var userAbout = userDoc.data().aboutMe;
 
@@ -362,21 +393,30 @@
               if (userName != null) {
                 document.getElementById("nameEdit").value = userName;
               }
-              if (userAge != null) {
-                document.getElementById("ageEdit").value = userAge;
-              }
               if (userGender != null) {
                 document.getElementById("genderEdit").value = userGender;
               }
-              if (userDisplay != null) {
-                document.getElementById("displayEdit").value = userDisplay;
+              if (userYear != null) {
+                document.getElementById("yearEdit").value = userYear;
+              }
+              if (userMonth != null) {
+                document.getElementById("monthEdit").value = userMonth;
+              }
+              if (userDay != null) {
+                document.getElementById("dayEdit").value = userDay;
               }
               if (userCountry != null) {
                 document.getElementById("countryEdit").value = userCountry;
               }
-              if (userTimeZone != null) {
-                document.getElementById("timeZoneEdit").value = userTimeZone;
+              if (userState != null) {
+                document.getElementById("stateEdit").value = userState;
               }
+              if (userCity != null) {
+                document.getElementById("cityEdit").value = userCity;
+              }
+              // if (userTimeZone != null) {
+              //   document.getElementById("timeZoneEdit").value = userTimeZone;
+              // }
               if (userDiscord != null) {
                 document.getElementById("discordIDEdit").value = userDiscord;
               }
@@ -402,21 +442,33 @@
     function saveProfile() {
 
       userName = document.getElementById('nameEdit').value;       //get the value of the field with id="nameEdit"
-      userAge = document.getElementById('ageEdit').value;     //get the value of the field with id="ageEdit"
+      userYear = document.getElementById('yearEdit').value;     //get the value of the field with id="yearEdit"
+      userMonth = document.getElementById('monthEdit').value;     //get the value of the field with id="monthEdit"
+      userDay = document.getElementById('dayEdit').value;     //get the value of the field with id="dayEdit"
       userGender = document.getElementById('genderEdit').value;       //get the value of the field with id="genderEdit"
-      userDisplay = document.getElementById('displayEdit').value;     //get the value of the field with id="displaynameEdit"
       userCountry = document.getElementById('countryEdit').value;       //get the value of the field with id="countryEdit"
-      userTimeZone = document.getElementById('timeZoneEdit').value;       //get the value of the field with id="timeZoneEdit"
+      userState = document.getElementById('stateEdit').value;       //get the value of the field with id="stateEdit"
+      userCity = document.getElementById('cityEdit').value;       //get the value of the field with id="cityEdit"
+      // userTimeZone = document.getElementById('timeZoneEdit').value;       //get the value of the field with id="timeZoneEdit"
       userDiscord = document.getElementById('discordIDEdit').value;       //get the value of the field with id="discordIDEdit"
-      userAbout = document.getElementById('descriptionEdit').value;
-
+      userAbout = document.getElementById('descriptionEdit').value;       //get the value of the field with id="descriptionEdit"
+      userAge = calculateAge(new Date(userYear, userMonth, userDay));     //get the user's age
+      
+      if (userYear == "") {
+              userAge = "";
+      }
+      
       currentUser.update({
         name: userName,
         age: userAge,
         gender: userGender,
-        displayName: userDisplay,
         country: userCountry,
-        timeZone: userTimeZone,
+        state: userState,
+        city: userCity,
+        year: userYear,
+        month: userMonth,
+        day: userDay,
+        // timeZone: userTimeZone,
         discordID: userDiscord,
         aboutMe: userAbout
       })
@@ -598,6 +650,13 @@
       }
 
       populatePreferences();
+
+      function calculateAge(birthDate) { 
+        var diff_ms = Date.now() - birthDate.getTime();
+        var age_dt = new Date(diff_ms); 
+  
+          return Math.abs(age_dt.getUTCFullYear() - 1970);
+      }
 
   </script>
 
