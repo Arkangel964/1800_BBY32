@@ -320,7 +320,7 @@
         if (user) {
 
           //go to the correct user document by referencing to the user uid
-          currentUser = db.collection("users").doc(user.uid).collection("games").doc("games")
+          currentUser = db.collection("users").doc(user.uid)
           //get the document for current user.
           currentUser.get()
             .then(gamesDoc => {
