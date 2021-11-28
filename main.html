@@ -36,19 +36,19 @@
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-info">
       <div class="container-fluid">
         <a class="navbar-brand" href="main.html">Ryme</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <!-- Got rid of the bottom nav and put it here, I linked main.html to Ryme-->
             <li>
-              <a class="NavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg"
+              <a id="topProfileButton" class="NavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg"
                   src="/images/account-circle-line.png"></a>
             </li>
             <li>
-              <a class="NavButton" aria-current="page" href="chat.html"><img class="bottomNavImg"
+              <a id="topChatButton" class="NavButton" aria-current="page" href="chat.html"><img class="bottomNavImg"
                   src="/images/chat-1-line.png"></a>
             </li>
           </ul>
@@ -134,7 +134,7 @@
   <!-- Content starts here-->
   <template id="CardTemplate">
     <div class="justify-content-center userCard">
-      <div class="col-xl-6 col-md-12">
+      <div class="col-md-12">
         <div class="card user-card-full">
           <div class="row m-l-0 m-r-0">
             <div class="col-sm-4 bg-c-lite-green user-profile">
@@ -178,15 +178,15 @@
   <!-- Bottom Navbar -->
   <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" id="bottomNavBar">
     <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="main.html"><img class="bottomNavImg"
+      <a id="bottomHomeButton" class="bottomNavButton" aria-current="page" href="main.html"><img class="bottomNavImg"
           src="/images/home-2-line.png"></a>
     </div>
     <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg"
+      <a id="bottomChatButton" class="bottomNavButton" aria-current="page" href="chat.html"><img class="bottomNavImg"
           src="/images/chat-1-line.png"></a>
     </div>
     <div class="bottomNavDiv">
-      <a class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg"
+      <a id="bottomProfileButton" class="bottomNavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg"
           src="/images/account-circle-line.png"></a>
     </div>
   </nav>

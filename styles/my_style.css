@@ -59,3 +59,13 @@
 .bottomNavImg{
     filter: invert();
 }
+
+#bottomNavBar{
+   visibility: hidden;
+}
+
+@media screen and (max-width: 975px) and (min-width: 1px) {
+    #bottomNavBar{
+        visibility: visible;
+     }
+}
