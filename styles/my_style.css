@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Public+Sans:wght@200&display=swap');
+body{
+    font-family: 'Public Sans', sans-serif;
+}
+
+.navbar-brand{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 #filterOverlay {
     position: fixed; /* Sit on top of the page content */
     display: none; /* Hidden by default */
@@ -64,7 +77,7 @@
    visibility: hidden;
 }
 
-@media screen and (max-width: 975px) and (min-width: 1px) {
+@media screen and (max-width: 998px) and (min-width: 1px) {
     #bottomNavBar{
         visibility: visible;
      }

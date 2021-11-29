@@ -39,24 +39,32 @@
 <body>
 
   <!-- Top Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="main.html">Ryme</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!--Removing this ul makes the searchbar not align to the right. No, I don't know why. If you want to try to fix it, feel free.-->
-        </ul>
-        <form class="d-flex">
-          <button id="filterbutton"><img id="filterimg" src="/images/filtericon.png"></button>
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-info">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="main.html">Ryme</a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Got rid of the bottom nav and put it here, I linked main.html to Ryme-->
+            <li>
+              <a id="topProfileButton" class="NavButton" aria-current="page" href="userprofile.html"><img class="bottomNavImg"
+                  src="/images/account-circle-line.png"></a>
+            </li>
+            <li>
+              <a id="topChatButton" class="NavButton" aria-current="page" href="chat.html"><img class="bottomNavImg"
+                  src="/images/chat-1-line.png"></a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <button id="filterbutton"><img id="filterimg" src="/images/filtericon.png"></button>
+          </form>
+        </div>
       </div>
-    </div>
+    </nav>
   </nav>
 
   <!-- Overlay for search filters -->
