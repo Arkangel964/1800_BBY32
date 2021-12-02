@@ -209,10 +209,10 @@
                   <label>Gender</label>
                   <h5><span id="genderhere"></span></h5>
                 </div>
-                <div class="media">
+                <!--<div class="media">
                   <label>Timezone</label>
                   <h5><span id="timezonehere"></span></h5>
-                </div>
+                </div>-->
                 <div class="media">
                   <label>Discord</label>
                   <h5><span id="discordhere"></span></h5>
@@ -274,8 +274,8 @@
     function insertinfos() {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          console.log(user.uid);
-          currentUser = db.collection("users").doc(user.uid);
+          console.log(user.uid); //curent user
+          currentUser = db.collection("users").doc(user.uid); //grab user.uid for current user and go to that doc
           currentUser.get()
             .then(userDoc => {
 
