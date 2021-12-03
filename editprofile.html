@@ -93,25 +93,25 @@
       <h2>Favourite Genre</h2>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="filtermoba" checked>
-        <label class="form-check-label" for="flexCheckDefault">
+        <label class="form-check-label" for="filtermoba">
           MOBA
         </label>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="filterbattleroyale" checked>
-        <label class="form-check-label" for="flexCheckDefault">
+        <label class="form-check-label" for="filterbattleroyale">
           Battle Royale
         </label>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="filterrts" checked>
-        <label class="form-check-label" for="flexCheckDefault">
+        <label class="form-check-label" for="filterrts">
           RTS
         </label>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="filtershooter" checked>
-        <label class="form-check-label" for="flexCheckDefault">
+        <label class="form-check-label" for="filtershooter">
           Shooter
         </label>
       </div>
@@ -123,7 +123,7 @@
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="filterstory" checked>
-        <label class="form-check-label" for="flexCheckDefault">
+        <label class="form-check-label" for="filterstory">
           Story
         </label>
       </div>
@@ -198,14 +198,14 @@
           <div class="row">
             <a href="games.html"><button type="button" class="btn btn-primary btn-md center-block">Add Games</button></a>
           </div>
-          <div class="accordion mt-3" id="accordionExample">
+          <div class="accordion mt-3" id="accordion">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed" type="button" id="changePref" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                   Change Preferences
                 </button>
               </h2>
-              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
                 <div class="accordion-body">
                   <div class="container rounded bg-white">
                     <div class="row">
@@ -255,7 +255,7 @@
               
                               <div class="mb-4">
                                 <h3 class="mb-3">My Playstyle</h3>
-                                <select class="form-select form-select-md mb-3" id="playstyle" aria-label=".form-select-lg example">
+                                <select class="form-select form-select-md mb-3" id="playstyle" aria-label=".form-select-lg">
                                   <option value="casual">Casual</option>
                                   <option value="medium">Medium</option>
                                   <option value="hardcore">Hardcore</option>
@@ -349,13 +349,11 @@
                   </select>
                 </div>
                 </div>
-              <!-- <div class="col-md-12"><label class="labels">Time Zone</label><input type="text" class="form-control"
-                  id="timeZoneEdit" placeholder="PST, EST, GMT..." value=""></div> -->
               <div class="col-md-12"><label class="labels">Discord ID</label><input type="text" class="form-control"
                   id="discordIDEdit" placeholder="Discord#1111" value=""></div>
             </div>
             <div class="form-group">
-              <label class="labels" for="exampleFormControlTextarea1">About Me</label>
+              <label class="labels" for="descriptionEdit">About Me</label>
               <textarea class="form-control" id="descriptionEdit" rows="3"></textarea>
           </div>
           </fieldset>
@@ -492,8 +490,6 @@
     }
 
     function uploadUserProfilePic() {
-        // Let's assume my storage is only enabled for authenticated users 
-        // This is set in your firebase console storage "rules" tab
 
         firebase.auth().onAuthStateChanged(function (user) {
             var fileInput = document.getElementById("uploadPic");   // pointer #1
@@ -659,6 +655,7 @@
 
       populatePreferences();
 
+      // Calculate user's age according to birthday entry
       function calculateAge(birthDate) { 
         var diff_ms = Date.now() - birthDate.getTime();
         var age_dt = new Date(diff_ms); 

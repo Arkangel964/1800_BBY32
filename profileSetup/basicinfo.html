@@ -213,6 +213,7 @@
       }
       getData();
 
+      // Calculate user's age according to birthday entry
       function calculateAge(birthDate) { 
         var diff_ms = Date.now() - birthDate.getTime();
         var age_dt = new Date(diff_ms); 
