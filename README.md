@@ -86,7 +86,7 @@ Firebase hosting files:
 * Nathan Fung - nfung13@my.bcit.ca
 * Kirin Tang - ktang91@my.bcit.ca
 * Will Whitfield - wwhitfield6@my.bcit.ca
-* Miguel Magpoc - 
+* Miguel Magpoc - mmagpoc@my.bcit.ca
 
 ## Acknowledgements
 * <a href="https://getbootstrap.com/">Bootstrap</a>
